@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="simple_robot">
+  <material name="blue">
+    <color rgba="0 0 0.8 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="1 1 1 1"/>
+  </material>
+
+  <material name="black">
+    <color rgba="0 0 0 1"/>
+  </material>
+
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.5 0.3 0.2"/>
+      </geometry>
+      <material name="blue"/>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+    </visual>
+  </link>
+
+<!-- Wheels  -->
+  <joint name="base_to_front_left" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_left_link"/>
+    <origin xyz="0 0.15 -0.1"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="front_left_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="1.57 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_front_right" type="continuous">
+    <parent link="base_link"/>
+    <child link="front_right_link"/>
+    <origin xyz="0 -0.15 -0.1"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="front_right_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.05" radius="0.1"/>
+      </geometry>
+      <material name="black"/>
+      <origin rpy="1.57 0 0" xyz="0 -0.0 0"/>
+    </visual>
+  </link>
+
+<!-- Caster wheel -->
+  <joint name="base_to_caster" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_link"/>
+    <origin xyz="-0.2 0 -0.15"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="caster_link">
+    <visual>
+      <geometry>
+       <sphere radius="0.05"/>
+      </geometry>
+      <material name="white"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </visual>
+  </link>
+
+</robot>
